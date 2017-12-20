@@ -1,3 +1,4 @@
+cordova.define("com.rjfun.cordova.httpd.CorHttpd", function(require, exports, module) {
 
 var argscheck = require('cordova/argscheck'),
     exec = require('cordova/exec');
@@ -33,5 +34,14 @@ corhttpd_exports.getLocalPath = function(success, error) {
 	  exec(success, error, "CorHttpd", "getLocalPath", []);
 };
 
-module.exports = corhttpd_exports;
 
+corhttpd_exports.onRequest = function (success, error) {
+ 	 exec(success, error, "CorHttpd", "onRequest", []);
+}
+
+corhttpd_exports.sendResponse = function (requestId, params, success, error) {
+  	exec(success, error, "CorHttpd", "sendResponse", [requestId, params]);
+}
+
+module.exports = corhttpd_exports;
+});
